@@ -1,0 +1,19 @@
+@import '../../styles.scss';
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container{
+    display:flex;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .item{
+        width: 100%;
+    }
+}

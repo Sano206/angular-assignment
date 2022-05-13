@@ -1,0 +1,40 @@
+<div class="container">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef>
+                Delete
+            </mat-header-cell>
+            <mat-cell *matCellDef="let action">
+                <button (click)="delete()" class="item" mat-button color="primary">Delete</button>
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container *ngFor="let field of fieldsSettings" [matColumnDef]="field.id">
+            <ng-container *ngIf="field.part !== undefined">
+                <ng-container *ngIf="field.subpart === undefined">
+                    <mat-cell *matCellDef="let row ">
+                        {{row[field.part][field.id]}}
+                    </mat-cell>
+                </ng-container>
+                <ng-container *ngIf="field.subpart !== undefined">
+                    <mat-cell *matCellDef="let row ">
+                        {{row[field.part][field.subpart][field.id]}}
+                    </mat-cell>
+                </ng-container>
+            </ng-container>
+            <mat-header-cell *matHeaderCellDef>
+                {{field.label}}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row ">
+                {{row[field.id]}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+
+</div>
